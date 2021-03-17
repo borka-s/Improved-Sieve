@@ -1,8 +1,8 @@
-parser grammar AutoFilterParser;
+parser grammar SieveParser;
 
 @parser::header {#pragma warning disable 3021}
 
-options { tokenVocab=AutoFilterLexer; }
+options { tokenVocab=SieveLexer; }
 
 // Filters
 filter: filterExpression[false];

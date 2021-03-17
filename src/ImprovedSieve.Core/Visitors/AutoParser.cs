@@ -7,7 +7,7 @@ using ImprovedSieve.Core.Visitors.SortBy;
 
 namespace ImprovedSieve.Core.Visitors
 {
-    public class AutoParser<TInput> : AutoFilterParserBaseVisitor<Expression>
+    public class AutoParser<TInput> : SieveParserBaseVisitor<Expression>
     {
         private readonly IQueryable _query;
 
@@ -22,91 +22,91 @@ namespace ImprovedSieve.Core.Visitors
             Item = item;
         }
 
-        public override Expression VisitFilter(AutoFilterParser.FilterContext context)
+        public override Expression VisitFilter(SieveParser.FilterContext context)
         {
             var visitor = new FilterVisitor<TInput>();
 
             return visitor.Visit(_query, Expression, context, Item);
         }
 
-        public override Expression VisitFilterExpression(AutoFilterParser.FilterExpressionContext context)
+        public override Expression VisitFilterExpression(SieveParser.FilterExpressionContext context)
         {
             var visitor = new FilterExpressionVisitor<TInput>();
 
             return visitor.Visit(_query, Expression, context, Item);
         }
 
-        public override Expression VisitOrExpression(AutoFilterParser.OrExpressionContext context)
+        public override Expression VisitOrExpression(SieveParser.OrExpressionContext context)
         {
             var visitor = new OrExpressionVisitor<TInput>();
 
             return visitor.Visit(_query, Expression, context, Item);
         }
 
-        public override Expression VisitAndExpression(AutoFilterParser.AndExpressionContext context)
+        public override Expression VisitAndExpression(SieveParser.AndExpressionContext context)
         {
             var visitor = new AndExpressionVisitor<TInput>();
 
             return visitor.Visit(_query, Expression, context, Item);
         }
 
-        public override Expression VisitBooleanExpression(AutoFilterParser.BooleanExpressionContext context)
+        public override Expression VisitBooleanExpression(SieveParser.BooleanExpressionContext context)
         {
             var visitor = new BooleanExpressionVisitor<TInput>();
 
             return visitor.Visit(_query, Expression, context, Item);
         }
 
-        public override Expression VisitAtom(AutoFilterParser.AtomContext context)
+        public override Expression VisitAtom(SieveParser.AtomContext context)
         {
             var visitor = new AtomVisitor<TInput>();
 
             return visitor.Visit(_query, Expression, context, Item);
         }
 
-        public override Expression VisitPropertyName(AutoFilterParser.PropertyNameContext context)
+        public override Expression VisitPropertyName(SieveParser.PropertyNameContext context)
         {
             var visitor = new PropertyVisitor<TInput>();
 
             return visitor.Visit(_query, Expression, context, Item);
         }
 
-        public override Expression VisitSubPropertyName(AutoFilterParser.SubPropertyNameContext context)
+        public override Expression VisitSubPropertyName(SieveParser.SubPropertyNameContext context)
         {
             var visitor = new SubPropertyVisitor<TInput>();
 
             return visitor.Visit(_query, Expression, context, Item);
         }
 
-        public override Expression VisitIdentifierPart(AutoFilterParser.IdentifierPartContext context)
+        public override Expression VisitIdentifierPart(SieveParser.IdentifierPartContext context)
         {
             var visitor = new IdentifierVisitor<TInput>();
 
             return visitor.Visit(_query, Expression, context, Item);
         }
 
-        public override Expression VisitConstant(AutoFilterParser.ConstantContext context)
+        public override Expression VisitConstant(SieveParser.ConstantContext context)
         {
             var visitor = new ConstantVisitor<TInput>();
 
             return visitor.Visit(_query, Expression, context, Item);
         }
 
-        public override Expression VisitSortBy(AutoFilterParser.SortByContext context)
+        public override Expression VisitSortBy(SieveParser.SortByContext context)
         {
             var visitor = new SortByVisitor<TInput>();
 
             return visitor.Visit(_query, Expression, context, Item);
         }
 
-        public override Expression VisitSortBylist(AutoFilterParser.SortBylistContext context)
+        public override Expression VisitSortBylist(SieveParser.SortBylistContext context)
         {
             var visitor = new SortByListVisitor<TInput>();
 
             return visitor.Visit(_query, Expression, context, Item);
         }
 
-        public override Expression VisitSortPropertyName(AutoFilterParser.SortPropertyNameContext context)
+        public override Expression VisitSortPropertyName(SieveParser.SortPropertyNameContext context)
         {
             var visitor = new SortPropertyNameVisitor<TInput>();
 

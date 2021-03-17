@@ -6,7 +6,7 @@ namespace ImprovedSieve.Core.Visitors.Shared
 {
     public class PropertyVisitor<TInput> : VisitorBase<TInput>
     {
-        public Expression Visit(IQueryable query, Expression expression, AutoFilterParser.PropertyNameContext context, Expression item = null)
+        public Expression Visit(IQueryable query, Expression expression, SieveParser.PropertyNameContext context, Expression item = null)
         {
             var property = Expression.PropertyOrField(item, context.identifierPart().GetText());
 

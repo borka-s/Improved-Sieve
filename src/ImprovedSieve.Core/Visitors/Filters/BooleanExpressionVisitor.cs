@@ -7,7 +7,7 @@ namespace ImprovedSieve.Core.Visitors.Filters
 {
     public class BooleanExpressionVisitor<TInput> : VisitorBase<TInput>
     {
-        public Expression Visit(IQueryable query, Expression expression, AutoFilterParser.BooleanExpressionContext context, Expression item = null)
+        public Expression Visit(IQueryable query, Expression expression, SieveParser.BooleanExpressionContext context, Expression item = null)
         {
             AutoParser = new AutoParser<TInput>(query, expression, item);
 

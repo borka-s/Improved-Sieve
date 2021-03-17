@@ -8,14 +8,14 @@ namespace ImprovedSieve.Core.Visitors.Shared
 {
     public class ConstantVisitor<TInput> : VisitorBase<TInput>
     {
-        public Expression Visit(IQueryable query, Expression expression, AutoFilterParser.ConstantContext context, Expression item = null)
+        public Expression Visit(IQueryable query, Expression expression, SieveParser.ConstantContext context, Expression item = null)
         {
             AutoParser = new AutoParser<TInput>(query, expression, item);
 
             return ConvertNode(context);
         }
 
-        private static Expression ConvertNode(AutoFilterParser.ConstantContext context)
+        private static Expression ConvertNode(SieveParser.ConstantContext context)
         {
             if (context.INT() != null)
             {

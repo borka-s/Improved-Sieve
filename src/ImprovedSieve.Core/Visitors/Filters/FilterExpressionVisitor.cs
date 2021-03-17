@@ -21,7 +21,7 @@ namespace ImprovedSieve.Core.Visitors.Filters
             return Expression.OrElse(aggregate, nextResult);
         }
 
-        public Expression Visit(IQueryable query, Expression expression, AutoFilterParser.FilterExpressionContext context, Expression item = null)
+        public Expression Visit(IQueryable query, Expression expression, SieveParser.FilterExpressionContext context, Expression item = null)
         {
             AutoParser = new AutoParser<TInput>(query, expression, item);
 

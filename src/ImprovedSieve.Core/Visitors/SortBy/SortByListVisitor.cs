@@ -13,7 +13,7 @@ namespace ImprovedSieve.Core.Visitors.SortBy
                 return aggregate;
             }
 
-            var sortPropertyNameContext = (AutoFilterParser.SortPropertyNameContext) Child;
+            var sortPropertyNameContext = (SieveParser.SortPropertyNameContext) Child;
             var desc = sortPropertyNameContext.DESC() != null;
 
             var command = desc
@@ -30,7 +30,7 @@ namespace ImprovedSieve.Core.Visitors.SortBy
             return result;
         }
 
-        public Expression Visit(IQueryable query, Expression expression, AutoFilterParser.SortBylistContext context, Expression item = null)
+        public Expression Visit(IQueryable query, Expression expression, SieveParser.SortBylistContext context, Expression item = null)
         {
             AutoParser = new AutoParser<TInput>(query, expression, item);
             var result = VisitChildren(context);

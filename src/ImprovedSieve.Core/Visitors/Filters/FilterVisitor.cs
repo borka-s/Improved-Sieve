@@ -6,7 +6,7 @@ namespace ImprovedSieve.Core.Visitors.Filters
 {
     public class FilterVisitor<TInput> : VisitorBase<TInput>
     {
-        public Expression Visit(IQueryable query, Expression expression, AutoFilterParser.FilterContext context, Expression item = null)
+        public Expression Visit(IQueryable query, Expression expression, SieveParser.FilterContext context, Expression item = null)
         {
             var parameter = Expression.Parameter(typeof(TInput), "x");
 

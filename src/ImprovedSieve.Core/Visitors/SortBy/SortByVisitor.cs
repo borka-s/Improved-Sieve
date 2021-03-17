@@ -6,7 +6,7 @@ namespace ImprovedSieve.Core.Visitors.SortBy
 {
     public class SortByVisitor<TInput> : VisitorBase<TInput>
     {
-        public Expression Visit(IQueryable query, Expression expression, AutoFilterParser.SortByContext context, Expression item = null)
+        public Expression Visit(IQueryable query, Expression expression, SieveParser.SortByContext context, Expression item = null)
         {
             var parameter = Expression.Parameter(typeof(TInput), "x");
 

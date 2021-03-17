@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ImprovedSieve.Core;
 using ImprovedSieve.Core.Extensions;
 using ImprovedSieve.Core.Models;
 
 namespace AutoFilter.TestConsole
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var list = new List<Person>
             {

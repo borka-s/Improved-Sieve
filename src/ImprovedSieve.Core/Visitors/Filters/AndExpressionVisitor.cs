@@ -21,7 +21,7 @@ namespace ImprovedSieve.Core.Visitors.Filters
             return null;
         }
 
-        public Expression Visit(IQueryable query, Expression expression, AutoFilterParser.AndExpressionContext context, Expression item = null)
+        public Expression Visit(IQueryable query, Expression expression, SieveParser.AndExpressionContext context, Expression item = null)
         {
             AutoParser = new AutoParser<TInput>(query, expression, item);
 

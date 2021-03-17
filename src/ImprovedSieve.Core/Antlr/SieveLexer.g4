@@ -1,4 +1,4 @@
-﻿lexer grammar AutoFilterLexer;
+﻿lexer grammar SieveLexer;
 
 @lexer::header {#pragma warning disable 3021}
 

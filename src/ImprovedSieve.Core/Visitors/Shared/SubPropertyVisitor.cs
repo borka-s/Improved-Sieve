@@ -6,7 +6,7 @@ namespace ImprovedSieve.Core.Visitors.Shared
 {
     public class SubPropertyVisitor<TInput> : VisitorBase<TInput>
     {
-        public Expression Visit(IQueryable query, Expression expression, AutoFilterParser.SubPropertyNameContext context, Expression item = null)
+        public Expression Visit(IQueryable query, Expression expression, SieveParser.SubPropertyNameContext context, Expression item = null)
         {
             AutoParser = new AutoParser<TInput>(query, expression, item);
 
