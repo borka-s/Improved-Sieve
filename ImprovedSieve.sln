@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImprovedSieve.Core", "src\ImprovedSieve.Core\ImprovedSieve.Core.csproj", "{EB28CA8F-3F66-4EEF-B509-62C27A99A93B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImprovedSieve.TestConsole", "src\ImprovedSieve.TestConsole\ImprovedSieve.TestConsole.csproj", "{4E65A3B3-94F8-4294-B578-493D94B33241}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB28CA8F-3F66-4EEF-B509-62C27A99A93B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB28CA8F-3F66-4EEF-B509-62C27A99A93B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB28CA8F-3F66-4EEF-B509-62C27A99A93B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB28CA8F-3F66-4EEF-B509-62C27A99A93B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E65A3B3-94F8-4294-B578-493D94B33241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E65A3B3-94F8-4294-B578-493D94B33241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E65A3B3-94F8-4294-B578-493D94B33241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E65A3B3-94F8-4294-B578-493D94B33241}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
