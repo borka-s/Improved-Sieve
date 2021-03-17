@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Antlr4.Runtime;
-using Antlr4.Runtime.Tree;
 using ImprovedSieve.Core.Antlr;
 using ImprovedSieve.Core.Visitors;
 

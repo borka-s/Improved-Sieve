@@ -19,7 +19,7 @@ namespace ImprovedSieve.Core.Visitors.NodeVisitors
 
             var comparisonType = Expression.Constant(StringComparison.InvariantCultureIgnoreCase);
 
-            return Expression.Call(leftExpression, "Equals", null, rightExpression, comparisonType);
+            return Expression.Call(leftExpression, Constants.ExpressionMethods.EqualsMethod, null, rightExpression, comparisonType);
         }
     }
 }

@@ -89,7 +89,7 @@ namespace ImprovedSieve.Core.Visitors.NodeVisitors
 
             if (!type.IsAssignableFrom(expression.Type))
             {
-                var convertToType = Configuration.TypeConversionMap(expression.Type, type);
+                var convertToType = TypeMapConfiguration.TypeConversionMap(expression.Type, type);
                 converted = Expression.Convert(expression, convertToType);
             }
 
@@ -98,7 +98,7 @@ namespace ImprovedSieve.Core.Visitors.NodeVisitors
 
         private static Expression MapAndCast(Expression from, Expression to)
         {
-            var mapped = Configuration.TypeConversionMap(from.Type, to.Type);
+            var mapped = TypeMapConfiguration.TypeConversionMap(from.Type, to.Type);
 
             if (mapped != from.Type)
             {

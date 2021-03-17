@@ -16,7 +16,7 @@ namespace ImprovedSieve.Core.Visitors.NodeVisitors
                 rightExpression = Expression.Convert(rightExpression, typeof(string));
             }
 
-            return Expression.Call(leftExpression, "EndsWith", null, rightExpression);
+            return Expression.Call(leftExpression, Constants.ExpressionMethods.EndsWith, null, rightExpression);
         }
     }
 }

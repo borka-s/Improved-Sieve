@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using Antlr4.Runtime.Tree;
 
 namespace ImprovedSieve.Core.Visitors
@@ -26,31 +25,6 @@ namespace ImprovedSieve.Core.Visitors
             }
 
             return result;
-        }
-
-        protected static Expression CastIfNeeded(Expression expression, Type type)
-        {
-            var converted = expression;
-
-            if (!type.IsAssignableFrom(expression.Type))
-            {
-                var convertToType = Configuration.TypeConversionMap(expression.Type, type);
-                converted = Expression.Convert(expression, convertToType);
-            }
-
-            return converted;
-        }
-
-        private static Expression MapAndCast(Expression from, Expression to)
-        {
-            var mapped = Configuration.TypeConversionMap(from.Type, to.Type);
-
-            if (mapped != from.Type)
-            {
-                from = CastIfNeeded(from, mapped);
-            }
-
-            return CastIfNeeded(from, to.Type);
         }
     }
 }

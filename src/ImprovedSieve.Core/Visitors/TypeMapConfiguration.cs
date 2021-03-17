@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ImprovedSieve.Core
+namespace ImprovedSieve.Core.Visitors
 {
-    public static class Configuration
+    public static class TypeMapConfiguration
     {
         public static Func<Type, Type> DefaultTypeMap = type => type;
 
@@ -18,7 +18,7 @@ namespace ImprovedSieve.Core
         /// </summary>
         public static Func<Type, Type, Type> TypeConversionMap { get; set; }
 
-        static Configuration()
+        static TypeMapConfiguration()
         {
             Reset();
         }
