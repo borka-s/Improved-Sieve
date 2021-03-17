@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using ImprovedSieve.Core;
+using ImprovedSieve.Core.Extensions;
+using ImprovedSieve.Core.Models;
 
 namespace AutoFilter.TestConsole
 {
@@ -18,12 +20,17 @@ namespace AutoFilter.TestConsole
                 new Person { Name = "Meter", Age = 85, Child = null },
             };
 
-            var filter = new SieveProcessor();
-            var query = filter.ParseFilter(list.AsQueryable(), "Child!=null,Name!_='Pet'");
-            // var query = filter.ParseFilter(list.AsQueryable(), "Child==null or (Child.Age<18 and (Age>=21 or Name=='Peter'))");
-            // var query = filter.ParseFilter(list.AsQueryable(), "(Child.Age<18 and Age>=21) or Name=='Peter'");
+            var sieveModel = new SieveModel
+            {
+                Filters = "Child!=null,Name!_='Pet'",
+                Sorts = "-Child.LastName",
+            };
 
-            query = filter.ParseSort(query, "-Child.Age");
+            var query = list.AsQueryable().ApplyFilters(sieveModel);
+            // var query = filter.CreateFilterExpression(list.AsQueryable(), "Child==null or (Child.Age<18 and (Age>=21 or Name=='Peter'))");
+            // var query = filter.CreateFilterExpression(list.AsQueryable(), "(Child.Age<18 and Age>=21) or Name=='Peter'");
+
+            query = query.ApplySortBy(sieveModel);
 
             foreach (var person in query.ToList())
             {
