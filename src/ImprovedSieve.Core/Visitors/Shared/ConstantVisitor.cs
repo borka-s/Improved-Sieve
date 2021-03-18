@@ -46,9 +46,7 @@ namespace ImprovedSieve.Core.Visitors.Shared
             {
                 var dateText = context.DATETIME()
                     .GetText()
-                    .Replace("datetime'", string.Empty)
-                    .Replace("'", string.Empty)
-                    .Replace(".", ":");
+                    .Replace("'", string.Empty);
 
                 return Expression.Constant(DateTime.Parse(dateText, null, DateTimeStyles.RoundtripKind));
             }

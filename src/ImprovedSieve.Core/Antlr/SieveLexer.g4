@@ -15,7 +15,6 @@ OR: '|';
 DESC: '-';
 
 NONE: 'none';
-
 ASSIGN: '=';
 EQUALS: '==';
 NOTEQUALS: '!=';
@@ -92,7 +91,7 @@ BOOL: ('true' | 'false');
 
 NULL: 'null';
 
-DATETIME: 'datetime\'' '0'..'9'+ '-' '0'..'9'+ '-' + '0'..'9'+ 'T' '0'..'9'+ ':' '0'..'9'+ (':' '0'..'9'+ ('.' '0'..'9'+)*)* ('Z')? '\'';
+DATETIME:  '0'..'2' '0'..'9'+ '-' ('0''1'..'9' | '1''1'..'2') '-' ('0''1'..'9'|'1'..'2''0'..'9'|'3''0'..'1') 'T' ('0'..'1''0'..'9'|'2''0'..'4') ':' ('0'..'5''0'..'9') (':' '0'..'9'+ ('.' '0'..'9'+)*)* ('Z')? ('+'('0'..'1''0'..'9'|'2''0'..'4')':'('0'..'5''0'..'9'))?;
 
 GUID: 'guid\'' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '\'';
 
