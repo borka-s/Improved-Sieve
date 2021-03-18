@@ -10,18 +10,18 @@ namespace ImprovedSieve.Core
     {
         private static readonly Lazy<SieveProcessor> Instance = new Lazy<SieveProcessor>(() => new SieveProcessor());
 
-        private SieveOptions _options;
+        public SieveOptions Options { get; private set; }
 
         public static SieveProcessor Current => Instance.Value;
 
         private SieveProcessor()
         {
-            _options = SieveOptions.Defaults();
+            Options = SieveOptions.Defaults();
         }
 
         public void Init(SieveOptions options)
         {
-            _options = options;
+            Options = options;
         }
 
         public IQueryable<T> CreateFilterExpression<T>(IQueryable<T> query, IParseTree filterTree)
@@ -63,8 +63,8 @@ namespace ImprovedSieve.Core
         public IQueryable<T> CreatePaginationExpression<T>(IQueryable<T> query, int? modelPage, int? modelPageSize)
         {
             var page = modelPage ?? 1;
-            var pageSize = modelPageSize ?? _options.DefaultPageSize;
-            var maxPageSize = _options.MaxPageSize > 0 ? _options.MaxPageSize : pageSize;
+            var pageSize = modelPageSize ?? Options.DefaultPageSize;
+            var maxPageSize = Options.MaxPageSize > 0 ? Options.MaxPageSize : pageSize;
 
             if (pageSize > 0)
             {
@@ -77,7 +77,7 @@ namespace ImprovedSieve.Core
 
         private void ThrowException(Exception ex)
         {
-            if (_options.ThrowExceptions)
+            if (Options.ThrowExceptions)
             {
                 throw new Exception("See inner exception", ex);
             }

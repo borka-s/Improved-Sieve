@@ -10,7 +10,7 @@ namespace ImprovedSieve.Core.Extensions
             return SieveProcessor.Current.CreateFilterExpression(query, model.FilterTree);
         }
 
-        public static IQueryable<T> ApplySortBy<T>(this IQueryable<T> query, SieveModel model)
+        public static IQueryable<T> ApplySorts<T>(this IQueryable<T> query, SieveModel model)
         {
             return SieveProcessor.Current.CreateSortExpression(query, model.SortTree);
         }
@@ -22,7 +22,7 @@ namespace ImprovedSieve.Core.Extensions
 
         public static IQueryable<T> ApplySieve<T>(this IQueryable<T> query, SieveModel model)
         {
-            return query.ApplyFilters(model).ApplySortBy(model).ApplyPagination(model);
+            return query.ApplyFilters(model).ApplySorts(model).ApplyPagination(model);
         }
     }
 }

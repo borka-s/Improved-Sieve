@@ -29,7 +29,7 @@ namespace AutoFilter.TestConsole
             // var query = filter.CreateFilterExpression(list.AsQueryable(), "Child==null or (Child.Age<18 and (Age>=21 or Name=='Peter'))");
             // var query = filter.CreateFilterExpression(list.AsQueryable(), "(Child.Age<18 and Age>=21) or Name=='Peter'");
 
-            query = query.ApplySortBy(sieveModel);
+            query = query.ApplySorts(sieveModel);
 
             foreach (var person in query.ToList())
             {

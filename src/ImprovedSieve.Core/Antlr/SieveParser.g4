@@ -43,7 +43,7 @@ sortBy: sortBylist;
 
 sortBylist: sortPropertyName (',' sortPropertyName)*;
 
-sortPropertyName: DESC? propertyName[false];
+sortPropertyName: NOT? DESC? propertyName[false];
 
 // Variables
 atom[bool subquery]: (constant (OR constant)*) | propertyName[subquery];
