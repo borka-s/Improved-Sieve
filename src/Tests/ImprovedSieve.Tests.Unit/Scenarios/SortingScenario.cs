@@ -7,23 +7,12 @@ using Xunit;
 
 namespace ImprovedSieve.Tests.Unit.Scenarios
 {
-    public class SortingScenario
+    [Collection(Consts.SieveCollection)]
+    public class SortingScenario : IDisposable
     {
-        [Fact]
-        public void NestedSortingWithNulls()
+        public void Dispose()
         {
-            SieveProcessor.Current.Init(new SieveOptions { ThrowExceptions = true });
-            var query = Helpers.GetPlayersList();
-
-            var sieveModel = new SieveModel
-            {
-                Sorts = "FavoriteGame.Price",
-            };
-
-            var result = query.ApplySorts(sieveModel).ToList();
-            var first = result.First();
-
-            Assert.Equal(new Guid("26f37896-60ab-47fe-9a41-8a5debfc407c"), first.Id);
+            SieveProcessor.Current.Init(SieveOptions.Defaults());
         }
 
         [Fact]
@@ -43,7 +32,7 @@ namespace ImprovedSieve.Tests.Unit.Scenarios
         [Fact]
         public void NestedSorting_WithNulls_IgnoreNullsSetInOptions_ThrowsException()
         {
-            SieveProcessor.Current.Init(new SieveOptions { ThrowExceptions = true, IgnoreSortingNulls = true});
+            SieveProcessor.Current.Init(new SieveOptions { ThrowExceptions = true, IgnoreSortingNulls = true });
             var query = Helpers.GetPlayersList();
 
             var sieveModel = new SieveModel
@@ -52,6 +41,23 @@ namespace ImprovedSieve.Tests.Unit.Scenarios
             };
 
             Assert.Throws<NullReferenceException>(() => query.ApplySorts(sieveModel).ToList());
+        }
+
+        [Fact]
+        public void NestedSortingWithNulls()
+        {
+            SieveProcessor.Current.Init(new SieveOptions { ThrowExceptions = true });
+            var query = Helpers.GetPlayersList();
+
+            var sieveModel = new SieveModel
+            {
+                Sorts = "FavoriteGame.Price",
+            };
+
+            var result = query.ApplySorts(sieveModel).ToList();
+            var first = result.First();
+
+            Assert.Equal(new Guid("26f37896-60ab-47fe-9a41-8a5debfc407c"), first.Id);
         }
 
         [Fact]

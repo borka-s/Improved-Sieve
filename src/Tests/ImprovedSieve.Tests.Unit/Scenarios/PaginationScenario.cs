@@ -6,6 +6,7 @@ using Xunit;
 
 namespace ImprovedSieve.Tests.Unit.Scenarios
 {
+    [Collection(Consts.SieveCollection)]
     public class PaginationScenario
     {
         [Fact]
