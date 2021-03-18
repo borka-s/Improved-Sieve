@@ -12,8 +12,8 @@
         {
             return new SieveOptions
             {
-                DefaultPageSize = 0,
-                MaxPageSize = 0,
+                DefaultPageSize = 10,
+                MaxPageSize = 100,
                 ThrowExceptions = false,
             };
         }
