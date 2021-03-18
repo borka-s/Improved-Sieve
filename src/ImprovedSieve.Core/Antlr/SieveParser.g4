@@ -14,8 +14,8 @@ orExpression[bool subquery]: andExpression[subquery] (',' andExpression[subquery
 andExpression[bool subquery]: ('(' filterExpression[subquery] ')' | booleanExpression[subquery])*;
 
 booleanExpression[bool subquery]
-	: atom1=atom[subquery]
-	    op=(EQUALS
+	: NOT? atom1=atom[subquery]
+	   (op=(EQUALS
 	    | NOTEQUALS
 	    | GREATERTHAN
 	    | LESSTHAN
@@ -36,7 +36,7 @@ booleanExpression[bool subquery]
         | CASEIGNORENOTSTARTSWITH
         | CASEIGNORENOTENDSWITH
         )
-	  atom2=atom[subquery];
+	  atom2=atom[subquery])?;
 
 // Order
 sortBy: sortBylist;
@@ -46,7 +46,7 @@ sortBylist: sortPropertyName (',' sortPropertyName)*;
 sortPropertyName: DESC? propertyName[false];
 
 // Variables
-atom[bool subquery]: constant | propertyName[subquery];
+atom[bool subquery]: (constant (OR constant)*) | propertyName[subquery];
 propertyName[bool subquery]: (identifierPart[subquery]) ('.' next=subPropertyName[false])?;
 subPropertyName[bool subquery]: propertyName[false];
 identifierPart[bool subquery] :	(id=IDENTIFIER | DYNAMICIDENTIFIER);

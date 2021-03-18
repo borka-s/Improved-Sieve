@@ -12,8 +12,52 @@ namespace ImprovedSieve.Core.Visitors.Filters
             AutoParser = new AutoParser<TInput>(query, expression, item);
 
             var leftExpression = VisitChildren(context.atom1);
+
+            if (context.atom2 == null)
+            {
+                var resultExpression = leftExpression.Type == typeof(bool) ? leftExpression : null;
+
+                if (context.NOT() != null && resultExpression != null)
+                {
+                    return Expression.Not(resultExpression);
+                }
+
+                return resultExpression;
+            }
+
+            if (context.atom2.ChildCount > 1)
+            {
+                return ConditionalVisit(context, leftExpression);
+            }
+
             var rightExpression = VisitChildren(context.atom2);
 
+            return VisitNode(context, leftExpression, rightExpression);
+        }
+
+        private Expression ConditionalVisit(SieveParser.BooleanExpressionContext context, Expression leftExpression)
+        {
+            Expression tempExpression = null;
+
+            for (var i = 0; i < context.atom2.ChildCount; i++)
+            {
+                var rightExpression = context.atom2.GetChild(i).Accept(AutoParser);
+
+                if (rightExpression == null)
+                {
+                    continue;
+                }
+
+                var nodeExpression = VisitNode(context, leftExpression, rightExpression);
+
+                tempExpression = tempExpression == null ? nodeExpression : Expression.OrElse(tempExpression, nodeExpression);
+            }
+
+            return tempExpression;
+        }
+
+        private Expression VisitNode(SieveParser.BooleanExpressionContext context, Expression leftExpression, Expression rightExpression)
+        {
             if (context.EQUALS() != null)
             {
                 return new EqualsNode().Visit(leftExpression, rightExpression);
