@@ -9,7 +9,7 @@ namespace ImprovedSieve.Core.Visitors.Filters
     {
         public Expression Visit(IQueryable query, Expression expression, SieveParser.BooleanExpressionContext context, Expression item = null)
         {
-            AutoParser = new AutoParser<TInput>(query, expression, item);
+            SieveParser = new SieveParser<TInput>(query, expression, item);
 
             var leftExpression = VisitChildren(context.atom1);
 
@@ -41,7 +41,7 @@ namespace ImprovedSieve.Core.Visitors.Filters
 
             for (var i = 0; i < context.atom2.ChildCount; i++)
             {
-                var rightExpression = context.atom2.GetChild(i).Accept(AutoParser);
+                var rightExpression = context.atom2.GetChild(i).Accept(SieveParser);
 
                 if (rightExpression == null)
                 {

@@ -5,7 +5,7 @@ namespace ImprovedSieve.Core.Visitors
 {
     public abstract class VisitorBase<TInput> : AbstractParseTreeVisitor<Expression>
     {
-        protected AutoParser<TInput> AutoParser;
+        protected SieveParser<TInput> SieveParser;
 
         protected bool IsFirstChild { get; private set; }
 
@@ -20,7 +20,7 @@ namespace ImprovedSieve.Core.Visitors
             {
                 IsFirstChild = i == 0;
                 Child = node.GetChild(i);
-                var nextResult = Child.Accept(AutoParser);
+                var nextResult = Child.Accept(SieveParser);
                 result = AggregateResult(result, nextResult);
             }
 

@@ -10,7 +10,7 @@ namespace ImprovedSieve.Core.Visitors.SortBy
         {
             var parameter = Expression.Parameter(typeof(TInput), "x");
 
-            AutoParser = new AutoParser<TInput>(query, expression, parameter);
+            SieveParser = new SieveParser<TInput>(query, expression, parameter);
 
             return VisitChildren(context);
         }

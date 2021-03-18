@@ -10,7 +10,7 @@ namespace ImprovedSieve.Core.Visitors.Filters
         {
             var parameter = Expression.Parameter(typeof(TInput), "x");
 
-            AutoParser = new AutoParser<TInput>(query, expression, parameter);
+            SieveParser = new SieveParser<TInput>(query, expression, parameter);
             var body = VisitChildren(context);
             var lambda = Expression.Lambda(body, parameter);
 

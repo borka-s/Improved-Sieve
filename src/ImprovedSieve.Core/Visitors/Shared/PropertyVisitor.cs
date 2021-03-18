@@ -10,7 +10,7 @@ namespace ImprovedSieve.Core.Visitors.Shared
         {
             var property = Expression.PropertyOrField(item, context.identifierPart().GetText());
 
-            AutoParser = new AutoParser<TInput>(query, expression, property);
+            SieveParser = new SieveParser<TInput>(query, expression, property);
 
             return VisitChildren(context);
         }

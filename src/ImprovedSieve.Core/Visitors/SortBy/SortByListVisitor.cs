@@ -23,16 +23,16 @@ namespace ImprovedSieve.Core.Visitors.SortBy
                     : "ThenBy";
 
 
-            var lambda = Expression.Lambda(nextResult, AutoParser.Item as ParameterExpression);
+            var lambda = Expression.Lambda(nextResult, SieveParser.Item as ParameterExpression);
 
-            var result = Expression.Call(typeof(Queryable), command, new[] { typeof(TInput), lambda.ReturnType }, aggregate ?? AutoParser.Expression, Expression.Quote(lambda));
+            var result = Expression.Call(typeof(Queryable), command, new[] { typeof(TInput), lambda.ReturnType }, aggregate ?? SieveParser.Expression, Expression.Quote(lambda));
 
             return result;
         }
 
         public Expression Visit(IQueryable query, Expression expression, SieveParser.SortBylistContext context, Expression item = null)
         {
-            AutoParser = new AutoParser<TInput>(query, expression, item);
+            SieveParser = new SieveParser<TInput>(query, expression, item);
             var result = VisitChildren(context);
 
             return result;

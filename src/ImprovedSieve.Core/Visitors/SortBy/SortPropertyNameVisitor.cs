@@ -8,7 +8,7 @@ namespace ImprovedSieve.Core.Visitors.SortBy
     {
         public Expression Visit(IQueryable query, Expression expression, SieveParser.SortPropertyNameContext context, Expression item = null)
         {
-            AutoParser = new AutoParser<TInput>(query, expression, item);
+            SieveParser = new SieveParser<TInput>(query, expression, item);
 
             var result = VisitChildren(context);
 

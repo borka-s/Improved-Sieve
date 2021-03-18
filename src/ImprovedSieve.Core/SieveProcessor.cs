@@ -26,7 +26,7 @@ namespace ImprovedSieve.Core
 
         public IQueryable<T> CreateFilterExpression<T>(IQueryable<T> query, IParseTree filterTree)
         {
-            var visitor = new AutoParser<T>(query, query.Expression);
+            var visitor = new SieveParser<T>(query, query.Expression);
 
             try
             {
@@ -44,7 +44,7 @@ namespace ImprovedSieve.Core
 
         public IQueryable<T> CreateSortExpression<T>(IQueryable<T> query, IParseTree sortByTree)
         {
-            var visitor = new AutoParser<T>(query, query.Expression);
+            var visitor = new SieveParser<T>(query, query.Expression);
 
             try
             {

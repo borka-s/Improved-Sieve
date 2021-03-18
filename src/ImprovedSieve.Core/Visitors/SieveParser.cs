@@ -7,7 +7,7 @@ using ImprovedSieve.Core.Visitors.SortBy;
 
 namespace ImprovedSieve.Core.Visitors
 {
-    public class AutoParser<TInput> : SieveParserBaseVisitor<Expression>
+    public class SieveParser<TInput> : SieveParserBaseVisitor<Expression>
     {
         private readonly IQueryable _query;
 
@@ -15,7 +15,7 @@ namespace ImprovedSieve.Core.Visitors
 
         public Expression Expression { get; }
 
-        public AutoParser(IQueryable query, Expression expression, Expression item = null)
+        public SieveParser(IQueryable query, Expression expression, Expression item = null)
         {
             _query = query;
             Expression = expression;

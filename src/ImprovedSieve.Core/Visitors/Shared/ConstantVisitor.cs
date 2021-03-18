@@ -10,7 +10,7 @@ namespace ImprovedSieve.Core.Visitors.Shared
     {
         public Expression Visit(IQueryable query, Expression expression, SieveParser.ConstantContext context, Expression item = null)
         {
-            AutoParser = new AutoParser<TInput>(query, expression, item);
+            SieveParser = new SieveParser<TInput>(query, expression, item);
 
             return ConvertNode(context);
         }
